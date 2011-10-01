@@ -15,7 +15,7 @@
 		function core_mods() {
 			if ( !is_admin() ) {
 				wp_deregister_script('jquery');
-				wp_register_script('jquery', (get_template_directory_uri()."/_/js/jquery.min.js"), array(), '1.7', true);
+				wp_register_script('jquery', (get_template_directory_uri()."/_/js/libs/jquery.min.js"), array(), '1.7', true);
 				wp_enqueue_script('jquery');
 			}
 		}
@@ -41,7 +41,10 @@
     		'after_title'   => '</h2>'
     	));
     }
+    // Add post-thumbnails support
+    add_theme_support( 'post-thumbnails' );
 
-    add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video')); // Add 3.1 post format theme support.
+    // Add 3.1 post format theme support.
+    add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video')); 
 
 ?>

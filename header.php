@@ -91,11 +91,12 @@
 		 - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
 		 - Transparency is not recommended (iOS will put a black BG behind the icon) -->
 
-	<!-- CSS: screen, mobile & print are all in the same file -->
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<!-- Less: screen, mobile & print are all in the same file -->
+	<link rel="stylesheet/less" type="text/css" href="<?php bloginfo('template_directory'); ?>/_/css/style.less">
+    <script src="<?php bloginfo('template_directory'); ?>/_/js/libs/less-1.1.4.min.js" type="text/javascript"></script>
 
 	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-	<script src="<?php bloginfo('template_directory'); ?>/_/js/modernizr-1.7.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/_/js/libs/modernizr-1.7.min.js"></script>
 
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
@@ -106,8 +107,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-	<div id="page-wrap"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 		<header id="header">
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>

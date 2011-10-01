@@ -1,7 +1,17 @@
 <?php get_header(); ?>
 
-	<?php query_posts(array('showposts' => 10, 'post_parent' => 0, 'post_type' => 'page', 'orderby' => 'menu_order', 'order' => 'ASC'));
+    <?php 
 
+    // Get all pages
+    query_posts(
+        array('showposts' => 10, 
+                'post_parent' => 0, 
+                'post_type' => 'page', 
+                'orderby' => 'menu_order', 
+                'order' => 'ASC')
+    );
+    
+    // Start loop
 	while (have_posts()) { the_post(); ?>
 
 	<?php if ($post->ID == get_option('page_for_posts')) { // if page is news ?>
@@ -12,6 +22,7 @@
 				</header>
 
 				<?php
+                // post count
 				$num = (int) get_category('4')->count;
 				$num_per_page = 6;
 				$num_pages = ceil($num/6);
@@ -70,26 +81,26 @@
 				</ul>
 			</div>
 		</section>
-
 	<?php } else { ?>
-	<section class="section" id="post-<?php the_ID(); ?>">
-		<article class="container_12">
-			<header>
-				<h2><?php the_title(); ?></h2>
-			</header>
+        <section class="section" id="post-<?php the_ID(); ?>">
+            <article class="container_12">
+                <header>
+                    <h2><?php the_title(); ?></h2>
+                </header>
 
-			<?php if (get_option('constellation_show_subpages')=='yes') {
-				$subpages = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&sort_column=menu_order&depth=1');
-				if ($subpages) echo '<nav id="subpages"><ul>' . str_replace('</a>',' &rarr;</a>',$subpages) . '</ul></nav>';
-			} ?>
+                <?php if (get_option('constellation_show_subpages')=='yes') {
+                    $subpages = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0&sort_column=menu_order&depth=1');
+                    if ($subpages) echo '<nav id="subpages"><ul>' . str_replace('</a>',' &rarr;</a>',$subpages) . '</ul></nav>';
+                } ?>
 
-			<?php the_content(''); ?>
+                <?php the_content(''); ?>
 
-		</article>
-	</section>
+            </article>
+        </section>
 	<?php } ?>
 
-	<?php }
+    <?php 
+        } // end loop
 		wp_reset_query();  // Restore global post data
 	?>
 
